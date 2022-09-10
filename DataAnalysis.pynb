@@ -1,0 +1,263 @@
+{
+ "cells": [
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "metadata": {
+    "collapsed": true
+   },
+   "outputs": [],
+   "source": [
+    "import pandas as pd"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "outputs": [],
+   "source": [
+    "csvPath = \"HostData.csv\""
+   ],
+   "metadata": {
+    "collapsed": false,
+    "pycharm": {
+     "name": "#%%\n"
+    }
+   }
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 97,
+   "outputs": [
+    {
+     "data": {
+      "text/plain": "                                 id     Advisor HARoleplay         DateTime  \\\n0  d0e5f607e85b4007b36fb886cf5a048e   AgentAuto       nill  9/10/2022 15:18   \n1  148de225218444c6913ff80c707d214f  RedTrigger       nill  9/10/2022 15:18   \n2  39d914c7db914c66b0487cc03ef5a46c   GreenBias       nill  9/10/2022 15:21   \n3  ae4c907512754caabfc8376534b9c439   GreenBias       nill  9/10/2022 15:21   \n4  c5b77897270b4c02845f4936ffb35dff   GreenOnly       nill  9/10/2022 15:23   \n\n  GameResults  \n0   [1, 2, 3]  \n1   [2, 0, 1]  \n2   [3, 2, 0]  \n3   [1, 2, 3]  \n4   [2, 0, 1]  ",
+      "text/html": "<div>\n<style scoped>\n    .dataframe tbody tr th:only-of-type {\n        vertical-align: middle;\n    }\n\n    .dataframe tbody tr th {\n        vertical-align: top;\n    }\n\n    .dataframe thead th {\n        text-align: right;\n    }\n</style>\n<table border=\"1\" class=\"dataframe\">\n  <thead>\n    <tr style=\"text-align: right;\">\n      <th></th>\n      <th>id</th>\n      <th>Advisor</th>\n      <th>HARoleplay</th>\n      <th>DateTime</th>\n      <th>GameResults</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <th>0</th>\n      <td>d0e5f607e85b4007b36fb886cf5a048e</td>\n      <td>AgentAuto</td>\n      <td>nill</td>\n      <td>9/10/2022 15:18</td>\n      <td>[1, 2, 3]</td>\n    </tr>\n    <tr>\n      <th>1</th>\n      <td>148de225218444c6913ff80c707d214f</td>\n      <td>RedTrigger</td>\n      <td>nill</td>\n      <td>9/10/2022 15:18</td>\n      <td>[2, 0, 1]</td>\n    </tr>\n    <tr>\n      <th>2</th>\n      <td>39d914c7db914c66b0487cc03ef5a46c</td>\n      <td>GreenBias</td>\n      <td>nill</td>\n      <td>9/10/2022 15:21</td>\n      <td>[3, 2, 0]</td>\n    </tr>\n    <tr>\n      <th>3</th>\n      <td>ae4c907512754caabfc8376534b9c439</td>\n      <td>GreenBias</td>\n      <td>nill</td>\n      <td>9/10/2022 15:21</td>\n      <td>[1, 2, 3]</td>\n    </tr>\n    <tr>\n      <th>4</th>\n      <td>c5b77897270b4c02845f4936ffb35dff</td>\n      <td>GreenOnly</td>\n      <td>nill</td>\n      <td>9/10/2022 15:23</td>\n      <td>[2, 0, 1]</td>\n    </tr>\n  </tbody>\n</table>\n</div>"
+     },
+     "execution_count": 97,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "df = pd.read_csv(csvPath)\n",
+    "df = pd.DataFrame(df)\n",
+    "df"
+   ],
+   "metadata": {
+    "collapsed": false,
+    "pycharm": {
+     "name": "#%%\n"
+    }
+   }
+  },
+  {
+   "cell_type": "markdown",
+   "source": [],
+   "metadata": {
+    "collapsed": false
+   }
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 98,
+   "outputs": [
+    {
+     "data": {
+      "text/plain": "           0\n0  [1, 2, 3]\n1  [2, 0, 1]\n2  [3, 2, 0]\n3  [1, 2, 3]\n4  [2, 0, 1]",
+      "text/html": "<div>\n<style scoped>\n    .dataframe tbody tr th:only-of-type {\n        vertical-align: middle;\n    }\n\n    .dataframe tbody tr th {\n        vertical-align: top;\n    }\n\n    .dataframe thead th {\n        text-align: right;\n    }\n</style>\n<table border=\"1\" class=\"dataframe\">\n  <thead>\n    <tr style=\"text-align: right;\">\n      <th></th>\n      <th>0</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <th>0</th>\n      <td>[1, 2, 3]</td>\n    </tr>\n    <tr>\n      <th>1</th>\n      <td>[2, 0, 1]</td>\n    </tr>\n    <tr>\n      <th>2</th>\n      <td>[3, 2, 0]</td>\n    </tr>\n    <tr>\n      <th>3</th>\n      <td>[1, 2, 3]</td>\n    </tr>\n    <tr>\n      <th>4</th>\n      <td>[2, 0, 1]</td>\n    </tr>\n  </tbody>\n</table>\n</div>"
+     },
+     "execution_count": 98,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "split_df = pd.DataFrame(df[\"GameResults\"].tolist())\n",
+    "split_df"
+   ],
+   "metadata": {
+    "collapsed": false,
+    "pycharm": {
+     "name": "#%%\n"
+    }
+   }
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "outputs": [],
+   "source": [],
+   "metadata": {
+    "collapsed": false,
+    "pycharm": {
+     "name": "#%%\n"
+    }
+   }
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 95,
+   "outputs": [],
+   "source": [
+    "# create a dataframe\n",
+    "df = pd.DataFrame({\n",
+    "    'Name' : ['a', 'b', 'c'],\n",
+    "    'Values': [[1,2,3], [2,0,1], [3,2,0]]\n",
+    "})"
+   ],
+   "metadata": {
+    "collapsed": false,
+    "pycharm": {
+     "name": "#%%\n"
+    }
+   }
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 96,
+   "outputs": [
+    {
+     "data": {
+      "text/plain": "  Name     Values\n0    a  [1, 2, 3]\n1    b  [2, 0, 1]\n2    c  [3, 2, 0]",
+      "text/html": "<div>\n<style scoped>\n    .dataframe tbody tr th:only-of-type {\n        vertical-align: middle;\n    }\n\n    .dataframe tbody tr th {\n        vertical-align: top;\n    }\n\n    .dataframe thead th {\n        text-align: right;\n    }\n</style>\n<table border=\"1\" class=\"dataframe\">\n  <thead>\n    <tr style=\"text-align: right;\">\n      <th></th>\n      <th>Name</th>\n      <th>Values</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <th>0</th>\n      <td>a</td>\n      <td>[1, 2, 3]</td>\n    </tr>\n    <tr>\n      <th>1</th>\n      <td>b</td>\n      <td>[2, 0, 1]</td>\n    </tr>\n    <tr>\n      <th>2</th>\n      <td>c</td>\n      <td>[3, 2, 0]</td>\n    </tr>\n  </tbody>\n</table>\n</div>"
+     },
+     "execution_count": 96,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "df"
+   ],
+   "metadata": {
+    "collapsed": false,
+    "pycharm": {
+     "name": "#%%\n"
+    }
+   }
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 61,
+   "outputs": [
+    {
+     "data": {
+      "text/plain": "   0  1  2\n0  1  2  3\n1  2  0  1\n2  3  2  0",
+      "text/html": "<div>\n<style scoped>\n    .dataframe tbody tr th:only-of-type {\n        vertical-align: middle;\n    }\n\n    .dataframe tbody tr th {\n        vertical-align: top;\n    }\n\n    .dataframe thead th {\n        text-align: right;\n    }\n</style>\n<table border=\"1\" class=\"dataframe\">\n  <thead>\n    <tr style=\"text-align: right;\">\n      <th></th>\n      <th>0</th>\n      <th>1</th>\n      <th>2</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <th>0</th>\n      <td>1</td>\n      <td>2</td>\n      <td>3</td>\n    </tr>\n    <tr>\n      <th>1</th>\n      <td>2</td>\n      <td>0</td>\n      <td>1</td>\n    </tr>\n    <tr>\n      <th>2</th>\n      <td>3</td>\n      <td>2</td>\n      <td>0</td>\n    </tr>\n  </tbody>\n</table>\n</div>"
+     },
+     "execution_count": 61,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "# new df from the column of lists\n",
+    "split_df = pd.DataFrame(df['Values'].tolist())\n",
+    "# display the resulting df\n",
+    "split_df"
+   ],
+   "metadata": {
+    "collapsed": false,
+    "pycharm": {
+     "name": "#%%\n"
+    }
+   }
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 99,
+   "outputs": [
+    {
+     "data": {
+      "text/plain": "  Name     Values\n0    a  [1, 2, 3]\n1    b  [2, 0, 1]\n2    c  [3, 2, 0]",
+      "text/html": "<div>\n<style scoped>\n    .dataframe tbody tr th:only-of-type {\n        vertical-align: middle;\n    }\n\n    .dataframe tbody tr th {\n        vertical-align: top;\n    }\n\n    .dataframe thead th {\n        text-align: right;\n    }\n</style>\n<table border=\"1\" class=\"dataframe\">\n  <thead>\n    <tr style=\"text-align: right;\">\n      <th></th>\n      <th>Name</th>\n      <th>Values</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <th>0</th>\n      <td>a</td>\n      <td>[1, 2, 3]</td>\n    </tr>\n    <tr>\n      <th>1</th>\n      <td>b</td>\n      <td>[2, 0, 1]</td>\n    </tr>\n    <tr>\n      <th>2</th>\n      <td>c</td>\n      <td>[3, 2, 0]</td>\n    </tr>\n  </tbody>\n</table>\n</div>"
+     },
+     "execution_count": 99,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "df = pd.read_csv(\"test.csv\")\n",
+    "df"
+   ],
+   "metadata": {
+    "collapsed": false,
+    "pycharm": {
+     "name": "#%%\n"
+    }
+   }
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 100,
+   "outputs": [
+    {
+     "data": {
+      "text/plain": "           0\n0  [1, 2, 3]\n1  [2, 0, 1]\n2  [3, 2, 0]",
+      "text/html": "<div>\n<style scoped>\n    .dataframe tbody tr th:only-of-type {\n        vertical-align: middle;\n    }\n\n    .dataframe tbody tr th {\n        vertical-align: top;\n    }\n\n    .dataframe thead th {\n        text-align: right;\n    }\n</style>\n<table border=\"1\" class=\"dataframe\">\n  <thead>\n    <tr style=\"text-align: right;\">\n      <th></th>\n      <th>0</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <th>0</th>\n      <td>[1, 2, 3]</td>\n    </tr>\n    <tr>\n      <th>1</th>\n      <td>[2, 0, 1]</td>\n    </tr>\n    <tr>\n      <th>2</th>\n      <td>[3, 2, 0]</td>\n    </tr>\n  </tbody>\n</table>\n</div>"
+     },
+     "execution_count": 100,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "split_df = pd.DataFrame(df['Values'].tolist())\n",
+    "split_df"
+   ],
+   "metadata": {
+    "collapsed": false,
+    "pycharm": {
+     "name": "#%%\n"
+    }
+   }
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 98,
+   "outputs": [],
+   "source": [],
+   "metadata": {
+    "collapsed": false,
+    "pycharm": {
+     "name": "#%%\n"
+    }
+   }
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "outputs": [],
+   "source": [],
+   "metadata": {
+    "collapsed": false,
+    "pycharm": {
+     "name": "#%%\n"
+    }
+   }
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 2
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython2",
+   "version": "2.7.6"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 0
+}
